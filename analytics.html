@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics - Restaurant POS</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <!-- Side Navigation (Desktop) -->
+  <nav class="nav-side">
+    <div style="margin-bottom: 2rem;">
+      <h2 style="color: var(--primary-start); font-size: 1.5rem;">Restaurant POS</h2>
+    </div>
+    <a href="index.html" class="nav-side-item">
+      <i class="fas fa-cash-register"></i>
+      <span>POS</span>
+    </a>
+    <a href="analytics.html" class="nav-side-item active">
+      <i class="fas fa-chart-line"></i>
+      <span>Analytics</span>
+    </a>
+    <a href="admin.html" class="nav-side-item">
+      <i class="fas fa-utensils"></i>
+      <span>Menu</span>
+    </a>
+    <a href="settings.html" class="nav-side-item">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container analytics-container">
+    <!-- Header -->
+    <div class="header" style="position: relative;">
+      <div style="flex: 1;">
+        <h1><i class="fas fa-chart-line"></i> Analytics Dashboard</h1>
+        <p>View sales reports and analytics</p>
+      </div>
+      <div class="export-buttons-top" style="position: absolute; top: 1.5rem; right: 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <button class="btn btn-export-excel btn-sm" id="export-excel">
+          <i class="fas fa-file-excel"></i> Export to Excel
+        </button>
+        <button class="btn btn-export-csv btn-sm" id="export-csv">
+          <i class="fas fa-file-csv"></i> Export to CSV
+        </button>
+        <button class="btn btn-export-whatsapp btn-sm" id="export-whatsapp">
+          <i class="fab fa-whatsapp"></i> Send WhatsApp Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Period Filter -->
+    <div class="period-filter">
+      <button class="period-btn active" data-period="today">Today</button>
+      <button class="period-btn" data-period="week">This Week</button>
+      <button class="period-btn" data-period="month">This Month</button>
+      <button class="period-btn" data-period="year">This Year</button>
+      <button class="period-btn" data-period="all">All Time</button>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-grid" id="summary-cards"></div>
+
+    <!-- Charts -->
+    <div class="card">
+      <h2 style="margin-bottom: 1rem;">Daily Sales</h2>
+      <div class="chart-container" id="daily-sales-chart"></div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-bottom: 1rem;">Monthly Revenue</h2>
+      <div class="chart-container" id="monthly-revenue-chart"></div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-bottom: 1rem;">Top Selling Items</h2>
+      <div class="chart-container" id="top-items-chart"></div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-bottom: 1rem;">Payment Mode Summary</h2>
+      <div class="chart-container" id="payment-mode-chart"></div>
+    </div>
+
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Bottom Navigation (Mobile) -->
+  <nav class="nav-bottom">
+    <a href="index.html" class="nav-item">
+      <i class="fas fa-cash-register"></i>
+      <span>POS</span>
+    </a>
+    <a href="analytics.html" class="nav-item active">
+      <i class="fas fa-chart-line"></i>
+      <span>Reports</span>
+    </a>
+    <a href="admin.html" class="nav-item">
+      <i class="fas fa-utensils"></i>
+      <span>Menu</span>
+    </a>
+    <a href="settings.html" class="nav-item">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/whatsapp-report.js"></script>
+</body>
+</html>
+

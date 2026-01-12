@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Restaurant POS - Admin Panel">
+  <title>Admin Panel - Menu Management</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Side Navigation (Desktop) -->
+  <nav class="nav-side">
+    <div style="margin-bottom: 2rem;">
+      <h2 style="color: var(--primary-start); font-size: 1.5rem;">Restaurant POS</h2>
+    </div>
+    <a href="index.html" class="nav-side-item">
+      <i class="fas fa-cash-register"></i>
+      <span>POS</span>
+    </a>
+    <a href="analytics.html" class="nav-side-item">
+      <i class="fas fa-chart-line"></i>
+      <span>Analytics</span>
+    </a>
+    <a href="admin.html" class="nav-side-item active">
+      <i class="fas fa-utensils"></i>
+      <span>Menu</span>
+    </a>
+    <a href="settings.html" class="nav-side-item">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container admin-container">
+    <!-- Header -->
+    <div class="header">
+      <h1><i class="fas fa-utensils"></i> Menu Management</h1>
+      <p>Manage menu items and categories</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="card">
+      <div class="flex gap-2" style="border-bottom: 1px solid var(--border-light); margin-bottom: 1.5rem; padding-bottom: 1rem;">
+        <button class="btn btn-primary" id="tab-items" onclick="Admin.showTab('items')">Items</button>
+        <button class="btn btn-secondary" id="tab-categories" onclick="Admin.showTab('categories')">Categories</button>
+      </div>
+
+      <!-- Items Tab -->
+      <div id="items-tab">
+        <div class="flex-between mb-2">
+          <h2>Menu Items</h2>
+          <button class="btn btn-primary" onclick="Admin.showItemModal()">
+            <i class="fas fa-plus"></i> Add Item
+          </button>
+        </div>
+        <div id="items-list"></div>
+      </div>
+
+      <!-- Categories Tab -->
+      <div id="categories-tab" style="display: none;">
+        <div class="flex-between mb-2">
+          <h2>Categories</h2>
+          <button class="btn btn-primary" onclick="Admin.showCategoryModal()">
+            <i class="fas fa-plus"></i> Add Category
+          </button>
+        </div>
+        <div id="categories-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item Modal -->
+  <div class="modal" id="item-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="item-modal-title">Add Item</h2>
+        <button class="modal-close" onclick="Admin.closeItemModal()">&times;</button>
+      </div>
+      <form id="item-form">
+        <input type="hidden" id="item-id">
+        <div class="form-group">
+          <label class="form-label">Item Name</label>
+          <input type="text" id="item-name" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Price</label>
+          <input type="number" id="item-price" class="form-input" step="0.01" min="0" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select id="item-category" class="form-select" required></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Image URL</label>
+          <input type="url" id="item-image" class="form-input" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            <input type="checkbox" id="item-active" checked> Active
+          </label>
+        </div>
+        <div class="flex gap-2">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Save</button>
+          <button type="button" class="btn btn-secondary" onclick="Admin.closeItemModal()" style="flex: 1;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Category Modal -->
+  <div class="modal" id="category-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="category-modal-title">Add Category</h2>
+        <button class="modal-close" onclick="Admin.closeCategoryModal()">&times;</button>
+      </div>
+      <form id="category-form">
+        <input type="hidden" id="category-id">
+        <div class="form-group">
+          <label class="form-label">Category Name</label>
+          <input type="text" id="category-name" class="form-input" required>
+        </div>
+        <div class="flex gap-2">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Save</button>
+          <button type="button" class="btn btn-secondary" onclick="Admin.closeCategoryModal()" style="flex: 1;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Bottom Navigation (Mobile) -->
+  <nav class="nav-bottom">
+    <a href="index.html" class="nav-item">
+      <i class="fas fa-cash-register"></i>
+      <span>POS</span>
+    </a>
+    <a href="analytics.html" class="nav-item">
+      <i class="fas fa-chart-line"></i>
+      <span>Reports</span>
+    </a>
+    <a href="admin.html" class="nav-item active">
+      <i class="fas fa-utensils"></i>
+      <span>Menu</span>
+    </a>
+    <a href="settings.html" class="nav-item">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/whatsapp-report.js"></script>
+</body>
+</html>
+

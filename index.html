@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Restaurant POS System">
+  <title>Restaurant POS - Billing</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+</head>
+<body>
+  <!-- Side Navigation (Desktop) -->
+  <nav class="nav-side">
+    <div style="margin-bottom: 2rem;">
+      <h2 style="color: var(--primary-start); font-size: 1.5rem;">Restaurant POS</h2>
+    </div>
+    <a href="index.html" class="nav-side-item active">
+      <i class="fas fa-cash-register"></i>
+      <span>POS</span>
+    </a>
+    <a href="analytics.html" class="nav-side-item">
+      <i class="fas fa-chart-line"></i>
+      <span>Analytics</span>
+    </a>
+    <a href="admin.html" class="nav-side-item">
+      <i class="fas fa-utensils"></i>
+      <span>Menu</span>
+    </a>
+    <a href="settings.html" class="nav-side-item">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1><i class="fas fa-cash-register"></i> Point of Sale</h1>
+      <p>Select items and process payments</p>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="search-bar">
+      <input type="text" id="search-input" class="search-input" placeholder="Search items...">
+      <div class="view-toggle">
+        <button class="view-btn active" id="view-grid">
+          <i class="fas fa-th"></i> Grid
+        </button>
+        <button class="view-btn" id="view-list">
+          <i class="fas fa-list"></i> List
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div id="category-filter" class="category-filter"></div>
+
+    <!-- Menu Container -->
+    <div id="menu-container"></div>
+
+    <!-- Cart Button -->
+    <a href="cart.html" class="btn btn-primary" id="cart-button" style="position: fixed; bottom: 80px; right: 1rem; z-index: 999; border-radius: 50%; width: 60px; height: 60px; box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; text-decoration: none;">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="cart-badge" style="position: absolute; top: -5px; right: -5px; background: #ef4444; color: white; border-radius: 50%; width: 24px; height: 24px; display: none; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">0</span>
+    </a>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal" id="payment-modal"></div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Bottom Navigation (Mobile) -->
+  <nav class="nav-bottom">
+    <a href="index.html" class="nav-item active">
+      <i class="fas fa-cash-register"></i>
+      <span>POS</span>
+    </a>
+    <a href="analytics.html" class="nav-item">
+      <i class="fas fa-chart-line"></i>
+      <span>Reports</span>
+    </a>
+    <a href="admin.html" class="nav-item">
+      <i class="fas fa-utensils"></i>
+      <span>Menu</span>
+    </a>
+    <a href="settings.html" class="nav-item">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pos.js"></script>
+  <script src="js/whatsapp-report.js"></script>
+</body>
+</html>
+
