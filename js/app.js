@@ -21,9 +21,10 @@ class App {
 
     // Register service worker
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
+      const swPath = 'service-worker.js';
+      navigator.serviceWorker.register(swPath)
         .then(reg => console.log('Service Worker registered'))
-        .catch(err => console.log('Service Worker registration failed'));
+        .catch(err => console.log('Service Worker registration failed', err));
     }
 
     // Setup navigation

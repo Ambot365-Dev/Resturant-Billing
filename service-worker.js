@@ -1,21 +1,25 @@
 const CACHE_NAME = 'restaurant-pos-v1';
+// Get base path for GitHub Pages
+const basePath = self.location.pathname.split('/').slice(0, -1).join('/') || '';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/admin.html',
-  '/analytics.html',
-  '/settings.html',
-  '/login.html',
-  '/invoice.html',
-  '/css/styles.css',
-  '/js/storage.js',
-  '/js/app.js',
-  '/js/pos.js',
-  '/js/admin.js',
-  '/js/analytics.js',
-  '/js/settings.js',
-  '/js/invoice.js',
-  '/js/whatsapp-report.js'
+  basePath + '/',
+  basePath + '/index.html',
+  basePath + '/admin.html',
+  basePath + '/analytics.html',
+  basePath + '/settings.html',
+  basePath + '/login.html',
+  basePath + '/invoice.html',
+  basePath + '/cart.html',
+  basePath + '/css/styles.css',
+  basePath + '/js/storage.js',
+  basePath + '/js/app.js',
+  basePath + '/js/pos.js',
+  basePath + '/js/admin.js',
+  basePath + '/js/analytics.js',
+  basePath + '/js/settings.js',
+  basePath + '/js/invoice.js',
+  basePath + '/js/cart.js',
+  basePath + '/js/whatsapp-report.js'
 ];
 
 // Install event
